@@ -38,6 +38,8 @@ func _process(delta: float) -> void:
 						%Smiley.changeSprite(\"Smiley\")
 					\"smileP1\":
 						%Smiley.changeSprite(\"Smile\")
+					\"smileP3\":
+						%Smiley.changeSprite(\"DESmiley\")
 			elif event[\"name\"] == \"Smily Window Move\":
 				$ShakeGameWindow.shake(event[\"params\"][0] / 5,0.3)
 			elif event[\"name\"] == \"Background Change\":
@@ -92,6 +94,7 @@ func _process(delta: float) -> void:
 			%Static.hide()
 		stages.p2:
 			if timeLeft > 0: return
+			$\"../GameNotes/PlayerNotes\"._colour_notes()
 			randomize()
 			var randomEventNum = randi_range(0,2)
 			if randomEventNum == 0:
@@ -110,6 +113,11 @@ func _process(delta: float) -> void:
 				%Static.show()
 				timeLeft = 0.7
 				static_sprite()
+		stages.p3:
+			%BG.hide()
+			%BGRed.hide()
+			%Static.hide()
+			$\"../GameNotes/PlayerNotes\"._colour_notes(\"red\")
 "
 
 [sub_resource type="GDScript" id="GDScript_l2rim"]

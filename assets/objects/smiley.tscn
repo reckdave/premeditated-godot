@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://byydmrb4hy1sv"]
+[gd_scene load_steps=5 format=3 uid="uid://byydmrb4hy1sv"]
 
 [ext_resource type="Texture2D" uid="uid://k0o7swgqvoua" path="res://assets/images/smiley/texture.png" id="1_cmxx7"]
 [ext_resource type="Texture2D" uid="uid://u3b7dtroxf0v" path="res://assets/images/smiley/smileytexture.png" id="2_sgauf"]
+[ext_resource type="Texture2D" uid="uid://bepi45whmglfv" path="res://assets/images/smiley/DESmiley.png" id="3_1gw5x"]
 
 [sub_resource type="GDScript" id="GDScript_n47ds"]
 resource_name = "smiley"
@@ -9,6 +10,7 @@ script/source = "extends Node2D
 
 var spriteData : Dictionary = {}
 var smileyspriteData : Dictionary = {}
+var desmileyspriteData : Dictionary = {}
 var currAnim = \"idle\"
 
 @export var windowShake : Node2D
@@ -16,13 +18,16 @@ var currAnim = \"idle\"
 func _ready() -> void:
 	var file = FileAccess.open(\"res://assets/images/smiley/spritedata.json\",FileAccess.READ)
 	var fileSmiley = FileAccess.open(\"res://assets/images/smiley/smileyspritedata.json\",FileAccess.READ)
+	var fileDES = FileAccess.open(\"res://assets/images/smiley/DESspritedata.json\",FileAccess.READ)
 	spriteData = str_to_var(file.get_as_text())
 	smileyspriteData = str_to_var(fileSmiley.get_as_text())
+	desmileyspriteData = str_to_var(fileDES.get_as_text())
 	play_anim(\"idle\")
 
 func changeSprite(spritename):
 	%Smile.hide()
 	%Smiley.hide()
+	%DESmiley.hide()
 	
 	get_node(spritename).show()
 	
@@ -35,13 +40,16 @@ func play_anim(direction):
 		animationData = smileyspriteData[currAnim]
 		if direction != \"idle\":
 			windowShake.shake(5,0.2)
-	
+	elif %DESmiley.visible:
+		animationData = desmileyspriteData[currAnim]
+		if direction != \"idle\":
+			windowShake.shake(8,0.2)
 	#region radomizeanim
 	%Smile.position.y = 0
 	#randomize()
 	match randi_range(0,1):
 		0:
-			if spriteData.get(currAnim + \"y\") and not %Smiley.visible:
+			if spriteData.get(currAnim + \"y\") and %Smile.visible:
 				animationData = spriteData[currAnim + \"y\"]
 				if currAnim + \"y\" == \"upy\":
 					%Smile.position.y = -120
@@ -55,6 +63,7 @@ func play_anim(direction):
 			break
 		%Smile.region_rect = Rect2(frame.x,frame.y,frame.width,frame.height)
 		%Smiley.region_rect = Rect2(frame.x,frame.y,frame.width,frame.height)
+		%DESmiley.region_rect = Rect2(frame.x,frame.y,frame.width,frame.height)
 		await get_tree().create_timer(0.07).timeout
 	#endregion
 	if currAnim == direction:
@@ -77,3 +86,11 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_sgauf")
 region_enabled = true
 region_rect = Rect2(316, 1549, 312, 279)
+
+[node name="DESmiley" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("3_1gw5x")
+region_enabled = true
+region_rect = Rect2(67.0154, 561.02, 370.256, 338.368)

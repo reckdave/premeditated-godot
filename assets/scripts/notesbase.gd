@@ -20,6 +20,20 @@ var currentTime = 0
 
 signal HitNote
 
+func _colour_notes(type = null):
+	match type:
+		"red":
+			for note in get_children():
+				if note is KeyNote:
+					note.actualColour = Color("#ff0000")
+					note.get_node("Sprite").modulate = Color("#ff0000")
+		_:
+			for note in get_children():
+				if note is KeyNote:
+					note.actualColour = note.noteColour
+					note.get_node("Sprite").modulate = Color("#ffff61")
+			
+
 func _getkeyData():
 	var file = FileAccess.open(chart,FileAccess.READ)
 	if file:
@@ -51,7 +65,7 @@ func spawnNote(noteData):
 	var keySprite : Sprite2D = newKey.get_node("Sprite")
 	
 	newKey.position.x = keyNote.position.x
-	keySprite.modulate = keyNote.noteColour
+	keySprite.modulate = keyNote.actualColour
 	keySprite.rotation = keyNote.get_node("Sprite").rotation
 	#region oldcode
 	#match noteData["id"]:

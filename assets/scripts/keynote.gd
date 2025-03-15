@@ -5,11 +5,15 @@ class_name KeyNote
 
 @export_enum("left","down","up","right") var direction = "left"
 @export var noteColour : Color
+var actualColour : Color
 #@export var direNum : int = 0
 
 var areaInside = null
 
 var pressed = false
+
+func _ready() -> void:
+	actualColour = noteColour
 
 func _input(event: InputEvent) -> void:
 	if get_parent().autohit: return
