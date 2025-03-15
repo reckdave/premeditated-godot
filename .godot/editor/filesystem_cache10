@@ -1,41 +1,41 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1742075641
-export_presets.cfg::TextFile::-1::1742073965::0::1::::<><><>0<>0<><>::
-icon.svg::CompressedTexture2D::2618726731149295784::1741971218::1742075447::1::::<><><>0<>0<>ae5aad94f7a12a537c3b9f090b7a1763<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
+::res://::1742076394
+export_presets.cfg::TextFile/TextFile::-1::1742073965::0::1::::<><><>0<>0<><>::
+icon.svg::CompressedTexture2D/CompressedTexture2D::2618726731149295784::1741971218::1742075447::1::::<><><>0<>0<>ae5aad94f7a12a537c3b9f090b7a1763<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 ::res://assets/::1741974426
 ::res://assets/audio/::1741971535
-::res://assets/audio/Premeditated/::1742075640
-Inst.ogg::AudioStreamOggVorbis::8617217333226542443::1741971525::1742075647::1::::<><><>0<>0<>88002d77e097e5eb4a8ba296b0be2723<>res://.godot/imported/Inst.ogg-137e26872bfe1faa2a849a5dc2c0c0df.oggvorbisstr::
-Voices boyfriend.ogg::AudioStreamOggVorbis::4861922971014124957::1741971525::1742075647::1::::<><><>0<>0<>f9030560e4e984e288d60e326e32aecf<>res://.godot/imported/Voices boyfriend.ogg-881c896f6a2704ea0ebe496ab279e104.oggvorbisstr::
-Voices smiley.ogg::AudioStreamOggVorbis::3395256073107113732::1741971525::1742075648::1::::<><><>0<>0<>7a2673691acb3396c77ca0a090606b40<>res://.godot/imported/Voices smiley.ogg-f1ea9426846890603bc268e75cb452be.oggvorbisstr::
+::res://assets/audio/Premeditated/::1742075648
+Inst.ogg::AudioStreamOggVorbis/AudioStreamOggVorbis::8617217333226542443::1741971525::1742075647::1::::<><><>0<>0<>88002d77e097e5eb4a8ba296b0be2723<>res://.godot/imported/Inst.ogg-137e26872bfe1faa2a849a5dc2c0c0df.oggvorbisstr::
+Voices boyfriend.ogg::AudioStreamOggVorbis/AudioStreamOggVorbis::4861922971014124957::1741971525::1742075647::1::::<><><>0<>0<>f9030560e4e984e288d60e326e32aecf<>res://.godot/imported/Voices boyfriend.ogg-881c896f6a2704ea0ebe496ab279e104.oggvorbisstr::
+Voices smiley.ogg::AudioStreamOggVorbis/AudioStreamOggVorbis::3395256073107113732::1741971525::1742075648::1::::<><><>0<>0<>7a2673691acb3396c77ca0a090606b40<>res://.godot/imported/Voices smiley.ogg-f1ea9426846890603bc268e75cb452be.oggvorbisstr::
 ::res://assets/charts/::1742071057
-premeditated.json::JSON::-1::1742071057::0::1::::<><><>0<>0<><>::
+premeditated.json::JSON/JSON::-1::1742071057::0::1::::<><><>0<>0<><>::
 ::res://assets/images/::1742058156
 ::res://assets/images/notes/::1742075447
-smile.png::CompressedTexture2D::5033970287605751435::1742034875::1742075447::1::::<><><>0<>0<>86cacd29618a442f0b5b073958f27e14<>res://.godot/imported/smile.png-37cc092a775dc7e554125f3944acb54e.ctex::
+smile.png::CompressedTexture2D/CompressedTexture2D::5033970287605751435::1742034875::1742075447::1::::<><><>0<>0<>86cacd29618a442f0b5b073958f27e14<>res://.godot/imported/smile.png-37cc092a775dc7e554125f3944acb54e.ctex::
 ::res://assets/images/premBg/::1742075447
-sky.png::CompressedTexture2D::9010289471000037065::1737294962::1742075447::1::::<><><>0<>0<>0e1143ff288f088b211ba5e96c04cdb1<>res://.godot/imported/sky.png-4bfa69899769f2e8ba18c1e98d8b9cc8.ctex::
-static.png::CompressedTexture2D::1705961204496451140::1733865251::1742075447::1::::<><><>0<>0<>387d20d80d9ba904d5c561a5c5a49606<>res://.godot/imported/static.png-ea67542871df2a94f88b53530540ab6d.ctex::
+sky.png::CompressedTexture2D/CompressedTexture2D::9010289471000037065::1737294962::1742075447::1::::<><><>0<>0<>0e1143ff288f088b211ba5e96c04cdb1<>res://.godot/imported/sky.png-4bfa69899769f2e8ba18c1e98d8b9cc8.ctex::
+static.png::CompressedTexture2D/CompressedTexture2D::1705961204496451140::1733865251::1742075447::1::::<><><>0<>0<>387d20d80d9ba904d5c561a5c5a49606<>res://.godot/imported/static.png-ea67542871df2a94f88b53530540ab6d.ctex::
 ::res://assets/images/smiley/::1742075449
-smileyspritedata.json::JSON::-1::1742068399::0::1::::<><><>0<>0<><>::
-smileytexture.png::CompressedTexture2D::1461697499985400435::1742053396::1742075448::1::::<><><>0<>0<>44e82b07355034929aa13db91c9d40de<>res://.godot/imported/smileytexture.png-fac8deabe6fec1a7ef50a5399118e415.ctex::
-spritedata.json::JSON::-1::1742068399::0::1::::<><><>0<>0<><>::
-texture.png::CompressedTexture2D::754406043236341320::1742048630::1742075449::1::::<><><>0<>0<>522dd1247bf949d1228d69fe12df6149<>res://.godot/imported/texture.png-8132ec2beaf148235ed0fbfe5c44bdf7.ctex::
+smileyspritedata.json::JSON/JSON::-1::1742068399::0::1::::<><><>0<>0<><>::
+smileytexture.png::CompressedTexture2D/CompressedTexture2D::1461697499985400435::1742053396::1742075448::1::::<><><>0<>0<>44e82b07355034929aa13db91c9d40de<>res://.godot/imported/smileytexture.png-fac8deabe6fec1a7ef50a5399118e415.ctex::
+spritedata.json::JSON/JSON::-1::1742068399::0::1::::<><><>0<>0<><>::
+texture.png::CompressedTexture2D/CompressedTexture2D::754406043236341320::1742048630::1742075449::1::::<><><>0<>0<>522dd1247bf949d1228d69fe12df6149<>res://.godot/imported/texture.png-8132ec2beaf148235ed0fbfe5c44bdf7.ctex::
 ::res://assets/objects/::1742075427
-key.tscn::PackedScene::6633238753177347852::1742075427::0::1::::<><><>0<>0<><>::uid://dxsp8oq0ks4hi::::res://assets/scripts/key.gd<>uid://cdyq0w78v662r::::res://assets/images/notes/smile.png
-keynote.tscn::PackedScene::2664341048162878368::1742075427::0::1::::<><><>0<>0<><>::uid://cbftufpjfwuc1::::res://assets/scripts/keynote.gd
-notes.tscn::PackedScene::8248453754316417234::1742075427::0::1::::<><><>0<>0<><>::uid://cdyq0w78v662r::::res://assets/images/notes/smile.png<>uid://citv0qdeknsl0::::res://assets/scripts/notesbase.gd<>uid://bd7vkp2x0f2ki::::res://assets/objects/keynote.tscn
-smiley.tscn::PackedScene::4120702473378183537::1742075427::0::1::::<><><>0<>0<><>::uid://k0o7swgqvoua::::res://assets/images/smiley/texture.png<>uid://u3b7dtroxf0v::::res://assets/images/smiley/smileytexture.png
-::res://assets/scenes/::1742075427
-game.tscn::PackedScene::8558401934494351320::1742075427::0::1::::<><><>0<>0<><>::uid://icy0q7ob8wm3::::res://assets/scenes/premeditated.tscn
-premeditated.tscn::PackedScene::567142247732494948::1742075427::0::1::::<><><>0<>0<><>::uid://ykm6xfh4yfs3::::res://assets/images/premBg/static.png<>uid://dpru3fololcfi::::res://assets/objects/notes.tscn<>uid://du1iks6m875t4::::res://assets/audio/Premeditated/Inst.ogg<>uid://ciiauit3kma2m::::res://assets/scripts/song.gd<>uid://cbjffqd21mgkr::::res://assets/audio/Premeditated/Voices boyfriend.ogg<>uid://bomxmvokaj2ps::::res://assets/audio/Premeditated/Voices smiley.ogg<>uid://byydmrb4hy1sv::::res://assets/objects/smiley.tscn<>uid://cftktiwcdyrjf::::res://assets/scripts/crt.gdshader<>uid://dgowe6bsh7o5b::::res://assets/scripts/vhs.gdshader<>uid://sb30qpsn4y4o::::res://assets/scripts/glitch.gdshader
+key.tscn::PackedScene/PackedScene::6633238753177347852::1742075427::0::1::::<><><>0<>0<><>::uid://dxsp8oq0ks4hi::::res://assets/scripts/key.gd<>uid://cdyq0w78v662r::::res://assets/images/notes/smile.png
+keynote.tscn::PackedScene/PackedScene::2664341048162878368::1742075427::0::1::::<><><>0<>0<><>::uid://cbftufpjfwuc1::::res://assets/scripts/keynote.gd
+notes.tscn::PackedScene/PackedScene::8248453754316417234::1742075427::0::1::::<><><>0<>0<><>::uid://cdyq0w78v662r::::res://assets/images/notes/smile.png<>uid://citv0qdeknsl0::::res://assets/scripts/notesbase.gd<>uid://bd7vkp2x0f2ki::::res://assets/objects/keynote.tscn
+smiley.tscn::PackedScene/PackedScene::4120702473378183537::1742075427::0::1::::<><><>0<>0<><>::uid://k0o7swgqvoua::::res://assets/images/smiley/texture.png<>uid://u3b7dtroxf0v::::res://assets/images/smiley/smileytexture.png
+::res://assets/scenes/::1742076081
+game.tscn::PackedScene/PackedScene::8558401934494351320::1742075427::0::1::::<><><>0<>0<><>::uid://icy0q7ob8wm3::::res://assets/scenes/premeditated.tscn
+premeditated.tscn::PackedScene::567142247732494948::1742076081::0::1::::<><><>0<>0<><>::uid://ykm6xfh4yfs3::::res://assets/images/premBg/static.png<>uid://dpru3fololcfi::::res://assets/objects/notes.tscn<>uid://du1iks6m875t4::::res://assets/audio/Premeditated/Inst.ogg<>uid://ciiauit3kma2m::::res://assets/scripts/song.gd<>uid://cbjffqd21mgkr::::res://assets/audio/Premeditated/Voices boyfriend.ogg<>uid://bomxmvokaj2ps::::res://assets/audio/Premeditated/Voices smiley.ogg<>uid://byydmrb4hy1sv::::res://assets/objects/smiley.tscn<>uid://cftktiwcdyrjf::::res://assets/scripts/crt.gdshader<>uid://dgowe6bsh7o5b::::res://assets/scripts/vhs.gdshader<>uid://sb30qpsn4y4o::::res://assets/scripts/glitch.gdshader
 ::res://assets/scripts/::1742075434
-badquality.gdshader::Shader::8523925969728563058::1742075434::0::1::::<><><>0<>0<><>::
-crt.gdshader::Shader::5163650317183698859::1742075434::0::1::::<><><>0<>0<><>::
-glitch.gdshader::Shader::1267209148265773184::1742075434::0::1::::<><><>0<>0<><>::
-key.gd::GDScript::8811734701611245370::1742068399::0::1::::Key<>Area2D<><>0<>0<><>::
-keynote.gd::GDScript::4854541724740499470::1742068399::0::1::::KeyNote<>Node2D<><>0<>0<><>::
-notesbase.gd::GDScript::5374895840716967839::1742068399::0::1::::NotesBase<>Node2D<><>0<>0<><>::
-settings.gd::GDScript::298353096254468988::1742068399::0::1::::<>Node<><>0<>0<><>::
-song.gd::GDScript::5350903305225150178::1742068399::0::1::::GameSong<>AudioStreamPlayer<><>0<>0<><>::
-vhs.gdshader::Shader::7610640949077941925::1742075434::0::1::::<><><>0<>0<><>::
+badquality.gdshader::Shader/Shader::8523925969728563058::1742075434::0::1::::<><><>0<>0<><>::
+crt.gdshader::Shader/Shader::5163650317183698859::1742075434::0::1::::<><><>0<>0<><>::
+glitch.gdshader::Shader/Shader::1267209148265773184::1742075434::0::1::::<><><>0<>0<><>::
+key.gd::GDScript/GDScript::8811734701611245370::1742068399::0::1::::Key<>Area2D<><>0<>0<><>::
+keynote.gd::GDScript/GDScript::4854541724740499470::1742068399::0::1::::KeyNote<>Node2D<><>0<>0<><>::
+notesbase.gd::GDScript/GDScript::5374895840716967839::1742068399::0::1::::NotesBase<>Node2D<><>0<>0<><>::
+settings.gd::GDScript/GDScript::298353096254468988::1742068399::0::1::::<>Node<><>0<>0<><>::
+song.gd::GDScript/GDScript::5350903305225150178::1742068399::0::1::::GameSong<>AudioStreamPlayer<><>0<>0<><>::
+vhs.gdshader::Shader/Shader::7610640949077941925::1742075434::0::1::::<><><>0<>0<><>::
