@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dt60vnwoab16k"]
+
+[ext_resource type="PackedScene" uid="uid://icy0q7ob8wm3" path="res://assets/scenes/premeditated.tscn" id="1_cb66b"]
+
+[node name="Game" type="Node"]
+
+[node name="PREMEDITATED" parent="." instance=ExtResource("1_cb66b")]

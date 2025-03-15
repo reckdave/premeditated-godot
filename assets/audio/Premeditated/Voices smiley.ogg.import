@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bomxmvokaj2ps"
+path="res://.godot/imported/Voices smiley.ogg-f1ea9426846890603bc268e75cb452be.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/Premeditated/Voices smiley.ogg"
+dest_files=["res://.godot/imported/Voices smiley.ogg-f1ea9426846890603bc268e75cb452be.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

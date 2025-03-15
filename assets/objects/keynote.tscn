@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bd7vkp2x0f2ki"]
+
+[ext_resource type="Script" uid="uid://cbftufpjfwuc1" path="res://assets/scripts/keynote.gd" id="2_xsqnh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4dm36"]
+size = Vector2(8, 300)
+
+[node name="KeyNote" type="Node2D"]
+script = ExtResource("2_xsqnh")
+
+[node name="SickArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SickArea"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_4dm36")
+debug_color = Color(0.93994, 0.724591, 0.284553, 0.42)
+
+[connection signal="area_entered" from="SickArea" to="." method="_on_sick_area_area_entered"]
+[connection signal="area_exited" from="SickArea" to="." method="_on_sick_area_area_exited"]

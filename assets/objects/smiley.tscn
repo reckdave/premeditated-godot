@@ -1,0 +1,79 @@
+[gd_scene load_steps=4 format=3 uid="uid://byydmrb4hy1sv"]
+
+[ext_resource type="Texture2D" uid="uid://k0o7swgqvoua" path="res://assets/images/smiley/texture.png" id="1_cmxx7"]
+[ext_resource type="Texture2D" uid="uid://u3b7dtroxf0v" path="res://assets/images/smiley/smileytexture.png" id="2_sgauf"]
+
+[sub_resource type="GDScript" id="GDScript_n47ds"]
+resource_name = "smiley"
+script/source = "extends Node2D
+
+var spriteData : Dictionary = {}
+var smileyspriteData : Dictionary = {}
+var currAnim = \"idle\"
+
+@export var windowShake : Node2D
+
+func _ready() -> void:
+	var file = FileAccess.open(\"res://assets/images/smiley/spritedata.json\",FileAccess.READ)
+	var fileSmiley = FileAccess.open(\"res://assets/images/smiley/smileyspritedata.json\",FileAccess.READ)
+	spriteData = str_to_var(file.get_as_text())
+	smileyspriteData = str_to_var(fileSmiley.get_as_text())
+	play_anim(\"idle\")
+
+func changeSprite(spritename):
+	%Smile.hide()
+	%Smiley.hide()
+	
+	get_node(spritename).show()
+	
+	play_anim(\"idle\")
+
+func play_anim(direction):
+	currAnim = direction
+	var animationData = spriteData[currAnim]
+	if %Smiley.visible:
+		animationData = smileyspriteData[currAnim]
+		if direction != \"idle\":
+			windowShake.shake(5,0.2)
+	
+	#region radomizeanim
+	%Smile.position.y = 0
+	#randomize()
+	match randi_range(0,1):
+		0:
+			if spriteData.get(currAnim + \"y\") and not %Smiley.visible:
+				animationData = spriteData[currAnim + \"y\"]
+				if currAnim + \"y\" == \"upy\":
+					%Smile.position.y = -120
+		1:
+			pass
+	#endregion
+	
+	#region changeFrame
+	for frame in animationData:
+		if currAnim != direction:
+			break
+		%Smile.region_rect = Rect2(frame.x,frame.y,frame.width,frame.height)
+		%Smiley.region_rect = Rect2(frame.x,frame.y,frame.width,frame.height)
+		await get_tree().create_timer(0.07).timeout
+	#endregion
+	if currAnim == direction:
+		play_anim(\"idle\")
+"
+
+[node name="Smiley" type="Node2D"]
+script = SubResource("GDScript_n47ds")
+
+[node name="Smile" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = ExtResource("1_cmxx7")
+region_enabled = true
+region_rect = Rect2(0, 2906, 398, 393)
+
+[node name="Smiley" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_sgauf")
+region_enabled = true
+region_rect = Rect2(316, 1549, 312, 279)
