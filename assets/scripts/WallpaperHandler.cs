@@ -42,7 +42,7 @@ public partial class WallpaperHandler : Node2D
 	{
 		setBackground(OS.GetUserDataDir() + "/Wallpapers/7.png");
 	}
-	public static void user()
+	public static void Wuser()
 	{
 		setBackground(OS.GetUserDataDir() + "/Wallpapers/user.png");
 	}
