@@ -680,6 +680,13 @@
 		},
 		{
 			"params": [
+				"p2"
+			],
+			"name": "Background Change",
+			"time": 226275.374299624
+		},
+		{
+			"params": [
 				100,
 				false
 			],
@@ -1616,6 +1623,13 @@
 			],
 			"time": 273709.929273446,
 			"name": "Change Character"
+		},
+		{
+			"params": [
+				"normal"
+			],
+			"time": 273709.929273446,
+			"name": "Background Change"
 		},
 		{
 			"params": [
