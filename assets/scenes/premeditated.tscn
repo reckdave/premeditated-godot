@@ -92,6 +92,7 @@ func _process(delta: float) -> void:
 			%BG.show()
 			%BGRed.hide()
 			%Static.hide()
+			$\"../GameNotes/PlayerNotes\"._colour_notes()
 		stages.p2:
 			if timeLeft > 0: return
 			$\"../GameNotes/PlayerNotes\"._colour_notes()
