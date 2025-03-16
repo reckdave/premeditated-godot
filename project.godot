@@ -12,8 +12,9 @@ config_version=5
 
 config/name="Premeditated Godot"
 run/main_scene="uid://dt60vnwoab16k"
-config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+config/features=PackedStringArray("4.4", "C#", "Forward Plus")
+config/icon="uid://3hceukrds2rg"
+config/windows_native_icon="res://assets/images/icons/normal.ico"
 
 [autoload]
 

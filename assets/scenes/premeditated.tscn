@@ -1,8 +1,9 @@
-[gd_scene load_steps=27 format=3 uid="uid://icy0q7ob8wm3"]
+[gd_scene load_steps=28 format=3 uid="uid://icy0q7ob8wm3"]
 
 [ext_resource type="Texture2D" uid="uid://ykm6xfh4yfs3" path="res://assets/images/premBg/static.png" id="1_65rws"]
+[ext_resource type="Script" uid="uid://b1cooqvgig6oi" path="res://assets/scripts/NotificationHandler.cs" id="1_q4dhs"]
 [ext_resource type="PackedScene" uid="uid://dpru3fololcfi" path="res://assets/objects/notes.tscn" id="1_v1n13"]
-[ext_resource type="VideoStream" path="res://assets/images/premBg/premedCloudBg.ogv" id="2_65rws"]
+[ext_resource type="VideoStream" uid="uid://dpdus6qd7aukx" path="res://assets/images/premBg/premedCloudBg.ogv" id="2_65rws"]
 [ext_resource type="AudioStream" uid="uid://du1iks6m875t4" path="res://assets/audio/Premeditated/Inst.ogg" id="2_jfqnk"]
 [ext_resource type="Script" uid="uid://ciiauit3kma2m" path="res://assets/scripts/song.gd" id="3_e05qb"]
 [ext_resource type="AudioStream" uid="uid://cbjffqd21mgkr" path="res://assets/audio/Premeditated/Voices boyfriend.ogg" id="4_5t2ji"]
@@ -44,6 +45,8 @@ func _process(delta: float) -> void:
 				$ShakeGameWindow.shake(event[\"params\"][0] / 5,0.3)
 			elif event[\"name\"] == \"Background Change\":
 				$BackgroundHandler.stage = $BackgroundHandler.stages[event[\"params\"][0]]
+			elif event[\"name\"] == \"Notification\":
+				$NotificationHandler.CreateNotifi(event[\"params\"][0],event[\"params\"][1])
 			elif event[\"name\"] == \"Fade in\":
 				var tween = get_tree().create_tween()
 				tween.set_ease(Tween.EASE_OUT)
@@ -224,6 +227,9 @@ size = Vector2(840, 120)
 
 [node name="PREMEDITATED" type="Node2D"]
 script = SubResource("GDScript_ax4yd")
+
+[node name="NotificationHandler" type="Node2D" parent="."]
+script = ExtResource("1_q4dhs")
 
 [node name="BackgroundHandler" type="Node2D" parent="."]
 script = SubResource("GDScript_65rws")
