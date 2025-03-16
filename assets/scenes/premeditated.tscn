@@ -1,7 +1,8 @@
-[gd_scene load_steps=29 format=3 uid="uid://icy0q7ob8wm3"]
+[gd_scene load_steps=27 format=3 uid="uid://icy0q7ob8wm3"]
 
 [ext_resource type="Texture2D" uid="uid://ykm6xfh4yfs3" path="res://assets/images/premBg/static.png" id="1_65rws"]
 [ext_resource type="PackedScene" uid="uid://dpru3fololcfi" path="res://assets/objects/notes.tscn" id="1_v1n13"]
+[ext_resource type="VideoStream" path="res://assets/images/premBg/premedCloudBg.ogv" id="2_65rws"]
 [ext_resource type="AudioStream" uid="uid://du1iks6m875t4" path="res://assets/audio/Premeditated/Inst.ogg" id="2_jfqnk"]
 [ext_resource type="Script" uid="uid://ciiauit3kma2m" path="res://assets/scripts/song.gd" id="3_e05qb"]
 [ext_resource type="AudioStream" uid="uid://cbjffqd21mgkr" path="res://assets/audio/Premeditated/Voices boyfriend.ogg" id="4_5t2ji"]
@@ -9,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://byydmrb4hy1sv" path="res://assets/objects/smiley.tscn" id="6_ax4yd"]
 [ext_resource type="Shader" uid="uid://cftktiwcdyrjf" path="res://assets/scripts/crt.gdshader" id="7_31iak"]
 [ext_resource type="Shader" uid="uid://dgowe6bsh7o5b" path="res://assets/scripts/vhs.gdshader" id="8_et1x2"]
-[ext_resource type="Shader" uid="uid://sb30qpsn4y4o" path="res://assets/scripts/glitch.gdshader" id="9_l2rim"]
 
 [sub_resource type="GDScript" id="GDScript_ax4yd"]
 resource_name = "mechanics i guess"
@@ -71,6 +71,7 @@ enum stages {
 	normal,
 	p2,
 	p3,
+	clouds,
 	cops
 }
 
@@ -89,6 +90,9 @@ func _process(delta: float) -> void:
 	
 	match stage:
 		stages.normal:
+			%Clouds.hide()
+			%Clouds.paused = true
+			
 			%BG.show()
 			%BGRed.hide()
 			%Static.hide()
@@ -96,6 +100,9 @@ func _process(delta: float) -> void:
 		stages.p2:
 			if timeLeft > 0: return
 			$\"../GameNotes/PlayerNotes\"._colour_notes()
+			%Clouds.hide()
+			%Clouds.paused = true
+			
 			randomize()
 			var randomEventNum = randi_range(0,2)
 			if randomEventNum == 0:
@@ -118,7 +125,18 @@ func _process(delta: float) -> void:
 			%BG.hide()
 			%BGRed.hide()
 			%Static.hide()
+			
+			%Clouds.hide()
+			%Clouds.paused = true
 			$\"../GameNotes/PlayerNotes\"._colour_notes(\"red\")
+		stages.clouds:
+			%BG.hide()
+			%BGRed.hide()
+			%Static.hide()
+			
+			%Clouds.show()
+			%Clouds.paused = false
+			
 "
 
 [sub_resource type="GDScript" id="GDScript_l2rim"]
@@ -177,9 +195,6 @@ colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_l2rim"]
 gradient = SubResource("Gradient_q4dhs")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q4knr"]
-size = Vector2(840, 120)
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l2rim"]
 shader = ExtResource("8_et1x2")
 shader_parameter/fog_density = 0.5
@@ -191,25 +206,21 @@ shader_parameter/fog_opacity = 0.5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_et1x2"]
 shader = ExtResource("7_31iak")
-shader_parameter/noise_intensity = 0.05
+shader_parameter/wiggle = 0.03
+shader_parameter/wiggle_speed = 25.0
+shader_parameter/smear = 0.3
+shader_parameter/blur_samples = 15
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_l2rim"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_65rws"]
-shader = ExtResource("9_l2rim")
-shader_parameter/shake_power = 0.002
-shader_parameter/shake_rate = 1.0
-shader_parameter/shake_speed = 0.01
-shader_parameter/shake_block_size = 30.5
-shader_parameter/shake_color_rate = 0.0
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_q4dhs"]
 
 [sub_resource type="Gradient" id="Gradient_l2rim"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_v1n13"]
 gradient = SubResource("Gradient_l2rim")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q4knr"]
+size = Vector2(840, 120)
 
 [node name="PREMEDITATED" type="Node2D"]
 script = SubResource("GDScript_ax4yd")
@@ -224,7 +235,6 @@ script = SubResource("GDScript_l2rim")
 layer = -1
 
 [node name="Contents" type="Control" parent="UI"]
-unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -263,6 +273,21 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture1D_l2rim")
 
+[node name="Clouds" type="VideoStreamPlayer" parent="UI/Contents"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -220.0
+offset_right = 220.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_65rws")
+autoplay = true
+loop = true
+
 [node name="Static" type="Sprite2D" parent="UI/Contents"]
 unique_name_in_owner = true
 visible = false
@@ -271,6 +296,35 @@ position = Vector2(407, 1021)
 scale = Vector2(3, 3)
 texture = ExtResource("1_65rws")
 hframes = 3
+
+[node name="Shader" type="CanvasLayer" parent="."]
+
+[node name="VHS" type="TextureRect" parent="Shader"]
+material = SubResource("ShaderMaterial_l2rim")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_65rws")
+
+[node name="Grain" type="TextureRect" parent="Shader"]
+material = SubResource("ShaderMaterial_et1x2")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_l2rim")
+
+[node name="FadeBlack" type="TextureRect" parent="Shader"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_v1n13")
 
 [node name="Song" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
@@ -320,41 +374,5 @@ chart = "res://assets/charts/premeditated.json"
 notePlayer = "dad"
 playerSprite = NodePath("../../Smiley")
 
-[node name="Shader" type="CanvasLayer" parent="."]
-
-[node name="VHS" type="TextureRect" parent="Shader"]
-material = SubResource("ShaderMaterial_l2rim")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("CanvasTexture_65rws")
-
-[node name="Grain" type="TextureRect" parent="Shader"]
-visible = false
-material = SubResource("ShaderMaterial_et1x2")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("CanvasTexture_l2rim")
-
-[node name="Glitch" type="TextureRect" parent="Shader"]
-material = SubResource("ShaderMaterial_65rws")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("CanvasTexture_q4dhs")
-
-[node name="FadeBlack" type="TextureRect" parent="Shader"]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("GradientTexture1D_v1n13")
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(420, 360)

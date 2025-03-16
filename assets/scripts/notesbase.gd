@@ -13,7 +13,7 @@ class_name NotesBase
 
 @onready var key = preload("res://assets/objects/key.tscn")
 
-var noteDelay = 500
+var noteDelay = 550
 var keyData = {}
 var notesTable = {}
 var currentTime = 0

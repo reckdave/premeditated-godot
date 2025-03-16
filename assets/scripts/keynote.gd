@@ -11,9 +11,18 @@ var actualColour : Color
 var areaInside = null
 
 var pressed = false
+var ghostTime = 0
 
 func _ready() -> void:
 	actualColour = noteColour
+
+func _process(delta: float) -> void:
+	if ghostTime > 0:
+		ghostTime -= delta
+		if areaInside:
+			areaInside.queue_free()
+			get_parent().emit_signal("HitNote",direction)
+			ghostTime = 0
 
 func _input(event: InputEvent) -> void:
 	if get_parent().autohit: return
@@ -22,14 +31,13 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("arrow_" + direction):
 		var tween = get_tree().create_tween()
 		tween.tween_property(keysprite,"scale",Vector2(0.9,0.9),0.02)
-		pressed = true
+		ghostTime = 0.05
 		if areaInside:
 			areaInside.queue_free()
 			get_parent().emit_signal("HitNote",direction)
 	if event.is_action_released("arrow_" + direction):
 		var tween = get_tree().create_tween()
 		tween.tween_property(keysprite,"scale",Vector2(1,1),0.02)
-		pressed = false
 
 
 
