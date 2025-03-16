@@ -91,6 +91,13 @@
 		},
 		{
 			"params": [
+				"1"
+			],
+			"name": "Wallpaper",
+			"time": 116954.0
+		},
+		{
+			"params": [
 				4,
 				1
 			],
@@ -145,7 +152,14 @@
 				"p3"
 			],
 			"name": "Background Change",
-			"time": 121982.180582346
+			"time": 142086.892624231
+		},
+		{
+			"params": [
+				"2"
+			],
+			"name": "Wallpaper",
+			"time": 142086.892624231
 		},
 		{
 			"params": [
@@ -621,6 +635,13 @@
 		},
 		{
 			"params": [
+				"3"
+			],
+			"name": "Wallpaper",
+			"time": 163500.0
+		},
+		{
+			"params": [
 				1
 			],
 			"name": "Premed Mechanics",
@@ -677,10 +698,24 @@
 		},
 		{
 			"params": [
+				"7"
+			],
+			"name": "Wallpaper",
+			"time": 206152.0
+		},
+		{
+			"params": [
 				1,
 				1
 			],
 			"name": "Camera Modulo Change",
+			"time": 226196.84026821
+		},
+		{
+			"params": [
+				"4"
+			],
+			"name": "Wallpaper",
 			"time": 226196.84026821
 		},
 		{
@@ -1639,6 +1674,13 @@
 		},
 		{
 			"params": [
+				"4"
+			],
+			"name": "Wallpaper",
+			"time": 271535.0
+		},
+		{
+			"params": [
 				10000,
 				0.1
 			],
@@ -1668,6 +1710,13 @@
 			],
 			"time": 274024.0653991,
 			"name": "BPM Change"
+		},
+		{
+			"params": [
+				"user"
+			],
+			"name": "Wallpaper",
+			"time": 280686.0
 		}
 	],
 	"scrollSpeed": 2.8,

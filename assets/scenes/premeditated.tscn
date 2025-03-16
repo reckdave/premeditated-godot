@@ -1,6 +1,7 @@
-[gd_scene load_steps=28 format=3 uid="uid://icy0q7ob8wm3"]
+[gd_scene load_steps=29 format=3 uid="uid://icy0q7ob8wm3"]
 
 [ext_resource type="Texture2D" uid="uid://ykm6xfh4yfs3" path="res://assets/images/premBg/static.png" id="1_65rws"]
+[ext_resource type="Script" uid="uid://o0jug5kto2vp" path="res://assets/scripts/WallpaperHandler.cs" id="1_jw5vr"]
 [ext_resource type="Script" uid="uid://b1cooqvgig6oi" path="res://assets/scripts/NotificationHandler.cs" id="1_q4dhs"]
 [ext_resource type="PackedScene" uid="uid://dpru3fololcfi" path="res://assets/objects/notes.tscn" id="1_v1n13"]
 [ext_resource type="VideoStream" uid="uid://dpdus6qd7aukx" path="res://assets/images/premBg/premedCloudBg.ogv" id="2_65rws"]
@@ -47,12 +48,30 @@ func _process(delta: float) -> void:
 				$BackgroundHandler.stage = $BackgroundHandler.stages[event[\"params\"][0]]
 			elif event[\"name\"] == \"Notification\":
 				$NotificationHandler.CreateNotifi(event[\"params\"][0],event[\"params\"][1])
+			elif event[\"name\"] == \"Wallpaper\":
+				$WallpaperHandler.call(\"W%s\" % event[\"params\"][0])
+				print(\"changed wallpaper...\")
 			elif event[\"name\"] == \"Fade in\":
 				var tween = get_tree().create_tween()
 				tween.set_ease(Tween.EASE_OUT)
 				tween.set_trans(Tween.TRANS_QUAD)
 				tween.parallel().tween_property($Shader/FadeBlack,\"modulate\",Color(0,0,0,0),12)
 				tween.parallel().tween_property(%Smiley,\"scale\",Vector2(1,1),11)
+
+
+func wallpaper_setup():
+	var wallpaperdir = DirAccess.open(\"user://\")
+	if wallpaperdir.dir_exists(\"Wallpapers\"):
+		pass
+	else:
+		wallpaperdir.make_dir(\"Wallpapers\")
+		for i in range(1,8):
+			var wallpaperImage = Image.new()
+			wallpaperImage.load(\"res://assets/images/wallpapers/%s.png\" % str(i))
+			wallpaperImage.save_png(\"user://Wallpapers/%s.png\" % str(i))
+		var userWallpaper = Image.new()
+		userWallpaper.load($WallpaperHandler.getBackground())
+		userWallpaper.save_png(\"user://Wallpapers/user.png\")
 
 func _ready() -> void:
 	var file = FileAccess.open(\"res://assets/charts/premeditated.json\",FileAccess.READ)
@@ -61,8 +80,14 @@ func _ready() -> void:
 	
 	$Shader/FadeBlack.show()
 	%Smiley.scale = Vector2(0,0)
-	
+	wallpaper_setup()
 	randomize()
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		$WallpaperHandler.user()
+	elif what == NOTIFICATION_CRASH:
+		$WallpaperHandler.user()
 "
 
 [sub_resource type="GDScript" id="GDScript_65rws"]
@@ -227,6 +252,9 @@ size = Vector2(840, 120)
 
 [node name="PREMEDITATED" type="Node2D"]
 script = SubResource("GDScript_ax4yd")
+
+[node name="WallpaperHandler" type="Node2D" parent="."]
+script = ExtResource("1_jw5vr")
 
 [node name="NotificationHandler" type="Node2D" parent="."]
 script = ExtResource("1_q4dhs")
