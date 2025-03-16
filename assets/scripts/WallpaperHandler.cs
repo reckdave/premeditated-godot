@@ -1,66 +1,55 @@
 using Godot;
 using System;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 
 public partial class WallpaperHandler : Node2D
 {
+	public static string userPath = "";
+
 	public enum UAction
 	{
 		SPI_SETDESKWALLPAPER = 20,
 		SPI_GETDESKWALLPAPER = 115
 	}
-	
+
 	[DllImport("user32.dll")]
 	public static extern int SystemParametersInfo(UAction uAction, int uParam, StringBuilder lpvParam, int fuWinIni);
-	
-	public static void W1()
+
+	public static void W1() => setBackground(OS.GetExecutablePath().GetBaseDir() + "/Wallpapers/1.jpg");
+	public static void W2() => setBackground(OS.GetExecutablePath().GetBaseDir() + "/Wallpapers/2.jpg");
+	public static void W3() => setBackground(OS.GetExecutablePath().GetBaseDir() + "/Wallpapers/3.jpg");
+	public static void W4() => setBackground(OS.GetExecutablePath().GetBaseDir() + "/Wallpapers/4.jpg");
+	public static void W5() => setBackground(OS.GetExecutablePath().GetBaseDir() + "/Wallpapers/5.jpg");
+	public static void W6() => setBackground(OS.GetExecutablePath().GetBaseDir() + "/Wallpapers/6.jpg");
+	public static void W7() => setBackground(OS.GetExecutablePath().GetBaseDir() + "/Wallpapers/7.jpg");
+
+	public override void _Ready()
 	{
-		setBackground(OS.GetUserDataDir() + "/Wallpapers/1.png");
+		userPath = getBackground();
+		
 	}
-	public static void W2()
-	{
-		setBackground(OS.GetUserDataDir() + "/Wallpapers/2.png");
-	}
-	public static void W3()
-	{
-		setBackground(OS.GetUserDataDir() + "/Wallpapers/3.png");
-	}
-	public static void W4()
-	{
-		setBackground(OS.GetUserDataDir() + "/Wallpapers/4.png");
-	}
-	public static void W5()
-	{
-		setBackground(OS.GetUserDataDir() + "/Wallpapers/5.png");
-	}
-	public static void W6()
-	{
-		setBackground(OS.GetUserDataDir() + "/Wallpapers/6.png");
-	}
-	public static void W7()
-	{
-		setBackground(OS.GetUserDataDir() + "/Wallpapers/7.png");
-	}
+
 	public static void Wuser()
 	{
-		setBackground(OS.GetUserDataDir() + "/Wallpapers/user.png");
+		setBackground(userPath);
 	}
-	
-	
+
 	public static string getBackground()
 	{
 		StringBuilder s = new StringBuilder(300);
 		SystemParametersInfo(UAction.SPI_GETDESKWALLPAPER, 300, s, 0);
 		return s.ToString();
 	}
-	
+
 	public static int setBackground(string fileName)
 	{
 		int result = 0;
-		if (System.IO.File.Exists(fileName))
+		string userFilePath = fileName;
+		if (System.IO.File.Exists(userFilePath))
 		{
-			StringBuilder s = new StringBuilder(fileName);
+			StringBuilder s = new StringBuilder(userFilePath);
 			result = SystemParametersInfo(UAction.SPI_SETDESKWALLPAPER, 0, s, 2);
 		}
 		return result;

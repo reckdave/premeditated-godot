@@ -19,7 +19,6 @@ script/source = "extends Node2D
 
 var eventData
 
-
 func typewindowName(text):
 	var finalText = \"\"
 	await get_tree().create_timer(0.3).timeout 
@@ -58,20 +57,10 @@ func _process(delta: float) -> void:
 				tween.parallel().tween_property($Shader/FadeBlack,\"modulate\",Color(0,0,0,0),12)
 				tween.parallel().tween_property(%Smiley,\"scale\",Vector2(1,1),11)
 
+var userwallpaperPath = null
 
 func wallpaper_setup():
-	var wallpaperdir = DirAccess.open(\"user://\")
-	if wallpaperdir.dir_exists(\"Wallpapers\"):
-		pass
-	else:
-		wallpaperdir.make_dir(\"Wallpapers\")
-		for i in range(1,8):
-			var wallpaperImage = Image.new()
-			wallpaperImage.load(\"res://assets/images/wallpapers/%s.png\" % str(i))
-			wallpaperImage.save_png(\"user://Wallpapers/%s.png\" % str(i))
-		var userWallpaper = Image.new()
-		userWallpaper.load($WallpaperHandler.getBackground())
-		userWallpaper.save_png(\"user://Wallpapers/user.png\")
+	userwallpaperPath = $WallpaperHandler.getBackground()
 
 func _ready() -> void:
 	var file = FileAccess.open(\"res://assets/charts/premeditated.json\",FileAccess.READ)
