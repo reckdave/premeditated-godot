@@ -13,12 +13,19 @@ class_name NotesBase
 
 @onready var key = preload("res://assets/objects/key.tscn")
 
+var health : int = 100:
+	set(value):
+		health = clamp(value,0,100)
+		if health <= 0:
+			get_tree().quit()
+
 var noteDelay = 550
 var keyData = {}
 var notesTable = {}
 var currentTime = 0
 
 signal HitNote
+signal Miss
 
 func _colour_notes(type = null):
 	match type:
@@ -55,6 +62,7 @@ func _process(delta: float) -> void:
 func _ready() -> void:
 	_getkeyData()
 	HitNote.connect(_on_hit_note)
+	Miss.connect(_on_miss_note)
 	noteBarriar.area_entered.connect(_note_barriar_area)
 
 func spawnNote(noteData):
@@ -64,47 +72,21 @@ func spawnNote(noteData):
 	var keyNote = get_node("KeyNote" + str(noteData["id"]))
 	var keySprite : Sprite2D = newKey.get_node("Sprite")
 	
+	newKey.direction = keyNote.direction
 	newKey.position.x = keyNote.position.x
 	keySprite.modulate = keyNote.actualColour
 	keySprite.rotation = keyNote.get_node("Sprite").rotation
-	#region oldcode
-	#match noteData["id"]:
-		#0:
-			#var keySprite : Sprite2D = newKey.get_node("Sprite")
-			#var keyNote = get_node("KeyNote")
-			#
-			#newKey.position.x = keyNote.position.x
-			#keySprite.modulate = keyNote.noteColour
-			#keySprite.rotation = keyNote.get_node("Sprite").rotation
-		#1:
-			#var keySprite : Sprite2D = newKey.get_node("Sprite")
-			#var keyNote = get_node("KeyNote2")
-			#
-			#newKey.position.x = keyNote.position.x
-			#keySprite.modulate = keyNote.noteColour
-			#keySprite.rotation = keyNote.get_node("Sprite").rotation
-		#2:
-			#var keySprite : Sprite2D = newKey.get_node("Sprite")
-			#var keyNote = get_node("KeyNote3")
-			#
-			#newKey.position.x = keyNote.position.x
-			#keySprite.modulate = keyNote.noteColour
-			#keySprite.rotation = keyNote.get_node("Sprite").rotation
-		#3:
-			#var keySprite : Sprite2D = newKey.get_node("Sprite")
-			#var keyNote = get_node("KeyNote4")
-			#
-			#newKey.position.x = keyNote.position.x
-			#keySprite.modulate = keyNote.noteColour
-			#keySprite.rotation = keyNote.get_node("Sprite").rotation
-	#endregion
 	add_child(newKey)
-	#await get_tree().create_timer(noteDelay).timeout
 
 func _note_barriar_area(area):
 	if area is Key:
 		area.queue_free()
+		emit_signal("Miss",area.direction)
 
 func _on_hit_note(direction):
+	health += 3
 	if playerSprite:
 		playerSprite.play_anim(direction)
+
+func _on_miss_note(direction):
+	health -= 20
