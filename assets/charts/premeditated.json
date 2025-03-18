@@ -116,6 +116,14 @@
 		},
 		{
 			"params": [
+				"ITS BEGINNING",
+				"evilrpc"
+			],
+			"time": 121982.180582346,
+			"name": "RPC"
+		},
+		{
+			"params": [
 				"p2"
 			],
 			"name": "Background Change",
@@ -146,6 +154,14 @@
 			],
 			"time": 142086.892624231,
 			"name": "Change Character"
+		},
+		{
+			"params": [
+				"...",
+				"evilrpc"
+			],
+			"time": 142086.892624231,
+			"name": "RPC"
 		},
 		{
 			"params": [
@@ -613,6 +629,14 @@
 		},
 		{
 			"params": [
+				"have you experienced death before?",
+				"evilrpc"
+			],
+			"time": 163134.013043079,
+			"name": "RPC"
+		},
+		{
+			"params": [
 				"p2"
 			],
 			"name": "Background Change",
@@ -734,6 +758,14 @@
 			],
 			"name": "Background Change",
 			"time": 226275.374299624
+		},
+		{
+			"params": [
+				"IM HERE IM HERE IM HERE IM HERE IM HERE",
+				"evilrpc"
+			],
+			"time": 226275.374299624,
+			"name": "RPC"
 		},
 		{
 			"params": [
@@ -1696,6 +1728,14 @@
 			],
 			"time": 273709.929273446,
 			"name": "Change Character"
+		},
+		{
+			"params": [
+				"Thanks for playing!",
+				"happyrpc"
+			],
+			"time": 273709.929273446,
+			"name": "RPC"
 		},
 		{
 			"params": [

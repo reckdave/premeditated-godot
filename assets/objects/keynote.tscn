@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cbftufpjfwuc1" path="res://assets/scripts/keynote.gd" id="2_xsqnh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4dm36"]
-size = Vector2(8, 300)
+size = Vector2(8, 220)
 
 [node name="KeyNote" type="Node2D"]
 script = ExtResource("2_xsqnh")

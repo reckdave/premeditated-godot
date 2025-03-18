@@ -20,6 +20,7 @@ config/windows_native_icon="res://assets/images/icons/normal.ico"
 [autoload]
 
 settings="*res://assets/scripts/settings.gd"
+DiscordRPCLoader="*res://addons/discord-rpc-gd/nodes/discord_autoload.gd"
 
 [display]
 
@@ -32,6 +33,10 @@ window/stretch/scale_mode="integer"
 [dotnet]
 
 project/assembly_name="Premeditated Godot"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/discord-rpc-gd/plugin.cfg")
 
 [importer_defaults]
 

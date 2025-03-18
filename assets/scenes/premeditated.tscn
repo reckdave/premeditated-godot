@@ -50,6 +50,10 @@ func _process(delta: float) -> void:
 			elif event[\"name\"] == \"Wallpaper\":
 				$WallpaperHandler.call(\"W%s\" % event[\"params\"][0])
 				print(\"changed wallpaper...\")
+			elif event[\"name\"] == \"RPC\":
+				DiscordRPC.details = event[\"params\"][0]
+				DiscordRPC.large_image = event[\"params\"][1]
+				DiscordRPC.refresh()
 			elif event[\"name\"] == \"Fade in\":
 				var tween = get_tree().create_tween()
 				tween.set_ease(Tween.EASE_OUT)
@@ -62,13 +66,26 @@ var userwallpaperPath = null
 func wallpaper_setup():
 	userwallpaperPath = $WallpaperHandler.getBackground()
 
+func discordRPC():
+	DiscordRPC.app_id = 1351611254963441754
+	DiscordRPC.details = \"Have fun!\"
+	DiscordRPC.large_image = \"happyrpc\"
+	DiscordRPC.large_image_text = \"Premeditated\"
+	DiscordRPC.small_image = \"icon_svg\"
+	DiscordRPC.small_image_text = \"Made In Godot\"
+	
+	DiscordRPC.start_timestamp = int(Time.get_unix_time_from_system())
+	DiscordRPC.refresh()
+
 func _ready() -> void:
 	var file = FileAccess.open(\"res://assets/charts/premeditated.json\",FileAccess.READ)
 	eventData = str_to_var(file.get_as_text())[\"events\"]
 	file.close()
 	
+	
 	$Shader/FadeBlack.show()
 	%Smiley.scale = Vector2(0,0)
+	discordRPC()
 	wallpaper_setup()
 	randomize()
 
@@ -332,6 +349,7 @@ grow_vertical = 2
 texture = SubResource("CanvasTexture_65rws")
 
 [node name="Grain" type="TextureRect" parent="Shader"]
+visible = false
 material = SubResource("ShaderMaterial_et1x2")
 anchors_preset = 15
 anchor_right = 1.0
